@@ -6,5 +6,6 @@ public record DadosCadastroUsuario(
     String email,
     String cpf,
     String senha,
-    String datadenascimento) {
+    String datadenascimento,
+    String telefone) {
 } 

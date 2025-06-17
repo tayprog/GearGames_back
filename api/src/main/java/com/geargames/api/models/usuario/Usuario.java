@@ -15,6 +15,7 @@ public class Usuario {
     private String cpf;
     private String senha;
     private String datadenascimento;
+    private String telefone;
 
     public Usuario(DadosCadastroUsuario dados) {
         this.nome = dados.nome();
@@ -22,5 +23,6 @@ public class Usuario {
         this.cpf = dados.cpf();
         this.senha = dados.senha();
         this.datadenascimento = dados.datadenascimento();
+        this.telefone = dados.telefone();
     }
 }
