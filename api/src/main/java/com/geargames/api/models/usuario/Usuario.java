@@ -1,6 +1,5 @@
-package com.geargames.api.models;
+package com.geargames.api.models.usuario;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Usuario {
     private String nome;
     private String email;
@@ -18,5 +16,11 @@ public class Usuario {
     private String senha;
     private String datadenascimento;
 
-    
+    public Usuario(DadosCadastroUsuario dados) {
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.cpf = dados.cpf();
+        this.senha = dados.senha();
+        this.datadenascimento = dados.datadenascimento();
+    }
 }

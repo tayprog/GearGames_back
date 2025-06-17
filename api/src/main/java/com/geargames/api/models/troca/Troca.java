@@ -1,6 +1,5 @@
-package com.geargames.api.models;
+package com.geargames.api.models.troca;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Troca { 
     private String nome;
     private String descricao;
@@ -21,4 +19,15 @@ public class Troca {
     private String requisitos;
     private String avaliacao;
     
+    public Troca(DadosCadastroTroca dados) {
+        this.nome = dados.nome();
+        this.descricao = dados.descricao();
+        this.preco = dados.preco();
+        this.imagem = dados.imagem();
+        this.categoria = dados.categoria();
+        this.plataforma = dados.plataforma();
+        this.requisitos = dados.requisitos();
+        this.avaliacao = dados.avaliacao();
+
+    }
 }
