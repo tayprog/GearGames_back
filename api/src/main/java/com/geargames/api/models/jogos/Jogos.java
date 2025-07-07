@@ -1,27 +1,37 @@
 package com.geargames.api.models.jogos;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Jogos {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String titulo;                
     private String desenvolvedor;         
     private String distribuidora;        
     private int anoLancamento;           
     private String plataforma;           
-    private String modosDeJogo;    
+    private String modosDeJogo;
+    
+    @Enumerated(EnumType.STRING)
+    private Categoria Categoria;
+
     private double preco;                 
     private double avaliacao;            
     private boolean estaDisponivel;       
     private String faixaEtaria;           
-    private String idiomasSuportados; 
+    private String idiomasSuportados;
+    
+    private Boolean ativo = true;
 
     public Jogos(DadosCadastroJogos dados) {
         this.titulo = dados.titulo();
