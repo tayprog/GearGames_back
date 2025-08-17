@@ -1,15 +1,27 @@
 package com.geargames.api.models.usuario;
+import com.geargames.api.models.biblioteca.Biblioteca;
+import com.geargames.api.models.pedido.Pedido;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.util.*;
 
+import org.springframework.security.core.*;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity(name = "usuario")
+@Table(name = "usuarios")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Usuario {
+public class Usuario implements UserDetails{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String email;
     private String cpf;
@@ -17,12 +29,54 @@ public class Usuario {
     private String datadenascimento;
     private String telefone;
 
+    @OneToMany(mappedBy = "usuario")
+    private Set<Pedido> pedidos = new HashSet<>();
+    
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Set<Biblioteca> biblioteca = new HashSet<>();
+
     public Usuario(DadosCadastroUsuario dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.cpf = dados.cpf();
-        this.senha = dados.senha();
+        this.senha = new BCryptPasswordEncoder().encode(dados.senha());
         this.datadenascimento = dados.datadenascimento();
         this.telefone = dados.telefone();
+       
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getPassword() {
+        return senha; 
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

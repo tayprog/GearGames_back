@@ -1,14 +1,45 @@
 package com.geargames.api.controllers;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.geargames.api.models.jogos.DadosCadastroJogos;
+import com.geargames.api.models.jogos.JogoRepository;
+import com.geargames.api.models.jogos.Jogos;
+
+import jakarta.transaction.Transactional;
 
 @RestController
 @RequestMapping("/jogos")
 public class JogosController {
 
-    public void cadastrarJogos(@RequestBody String dados) {
+    @Autowired
+    private JogoRepository repository;
+
+    @PostMapping
+    @Transactional
+    public void cadastrarJogos(@RequestBody DadosCadastroJogos dados) {
+        repository.save(new Jogos(dados));
+    }
+
+    @GetMapping
+    public List<Jogos> listarJogos() {
+        return repository.findAll();
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizarJogos(@RequestBody DadosCadastroJogos dados) {
+        var jogos = repository.getReferenceById(dados.id());
+        jogos.atualizarInformacoes(dados);
     }
     
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluirJogosLogico(@PathVariable Long id) {
+        var jogos = repository.getReferenceById(id);
+        jogos.exclusaoLogica();
+    }
 }

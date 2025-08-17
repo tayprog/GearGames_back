@@ -1,21 +1,25 @@
 package com.geargames.api.models.carrinho;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Table(name = "Carrinho")
+@Entity(name = "Carrinhos")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Carrinho {
-    private String idusuario;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String preco;
     private String itens;
 
     public Carrinho(DadosCadastroCarrinho dados) {
-        this.idusuario = dados.idusuario();
         this.preco = dados.preco();
         this.itens = dados.itens();
     }

@@ -1,51 +1,70 @@
 package com.geargames.api.models.jogos;
 
 
+import com.geargames.api.models.usuario.Usuario;
+
 import jakarta.persistence.*;
 import lombok.*;
 
+@Entity
+@Table(name = "jogos")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@AllArgsConstructor
 public class Jogos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    private String titulo;                
-    private String desenvolvedor;         
-    private String distribuidora;        
-    private int anoLancamento;           
-    private String plataforma;           
-    private String modosDeJogo;
+    private String titulo;
+    private String desenvolvedor;
+    private String distribuidora;
+    private int anoLancamento;
+
     
+    private Usuario usuario;
+
     @Enumerated(EnumType.STRING)
-    private Categoria Categoria;
-
-    private double preco;                 
-    private double avaliacao;            
-    private boolean estaDisponivel;       
-    private String faixaEtaria;           
-    private String idiomasSuportados;
+    private Categoria categoria; 
     
+    private Double preco; 
+    private boolean estaDisponivel;
+   
+
     private Boolean ativo = true;
 
     public Jogos(DadosCadastroJogos dados) {
+        this.id = dados.id();
         this.titulo = dados.titulo();
         this.desenvolvedor = dados.desenvolvedor();
         this.distribuidora = dados.distribuidora();
         this.anoLancamento = dados.anoLancamento();
-        this.plataforma = dados.plataforma();
-        this.modosDeJogo = dados.modosDeJogo();
+        this.usuario = dados.usuario();
+        this.categoria = dados.categoria(); 
         this.preco = dados.preco();
-        this.avaliacao = dados.avaliacao();
         this.estaDisponivel = dados.estaDisponivel();
-        this.faixaEtaria = dados.faixaEtaria();
-        this.idiomasSuportados = dados.idiomasSuportados();
+     
     }
 
-    
+    public void atualizarInformacoes(DadosCadastroJogos dados) {
+        if(dados.titulo() != null) {
+            this.titulo = dados.titulo();
+        }
+        if(dados.desenvolvedor() != null) {
+            this.desenvolvedor = dados.desenvolvedor();
+        }
+        if(dados.distribuidora() != null) {
+            this.distribuidora = dados.distribuidora();
+        }
+        if(dados.preco() != null) { 
+            this.preco = dados.preco();
+        }
+       
+    }
+
+    public void exclusaoLogica() {
+            this.ativo = false;
+    }
 }

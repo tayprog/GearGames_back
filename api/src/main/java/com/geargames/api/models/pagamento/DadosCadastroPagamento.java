@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import com.geargames.api.models.usuario.Usuario;
 
 public record DadosCadastroPagamento(
-    String idPagamento,           
+    Long idPagamento,           
     String jogo,                    
     Usuario usuario,              
     double valorPago,             
