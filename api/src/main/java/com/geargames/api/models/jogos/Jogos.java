@@ -1,6 +1,7 @@
 package com.geargames.api.models.jogos;
 
 
+import com.geargames.api.models.biblioteca.Biblioteca;
 import com.geargames.api.models.usuario.Usuario;
 
 import jakarta.persistence.*;
@@ -24,10 +25,17 @@ public class Jogos {
     private int anoLancamento;
 
     
-    private Usuario usuario;
 
     @Enumerated(EnumType.STRING)
-    private Categoria categoria; 
+    private Categoria categoria;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "biblioteca_id") 
+    private Biblioteca biblioteca;
     
     private Double preco; 
     private boolean estaDisponivel;
@@ -67,4 +75,7 @@ public class Jogos {
     public void exclusaoLogica() {
             this.ativo = false;
     }
+
+
+
 }

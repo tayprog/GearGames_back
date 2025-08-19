@@ -2,12 +2,16 @@ package com.geargames.api.models.biblioteca;
 
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.geargames.api.models.jogos.Jogos;
 import com.geargames.api.models.usuario.Usuario;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+@Entity
 @Table(name = "biblioteca")
 @Getter
 @Setter
@@ -22,13 +26,12 @@ public class Biblioteca {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    @ManyToOne // Uma biblioteca tem um único jogo
-    @JoinColumn(name = "jogo_id")
-    private Jogos jogos;
+    @OneToMany(mappedBy = "biblioteca") // Uma biblioteca tem vários jogos
+    private Set<Jogos> jogos = new HashSet<>();
     
-    public Biblioteca(Usuario usuario, Jogos jogos) {
+    public Biblioteca(Usuario usuario, Jogos jogo) {
         this.usuario = usuario;
-        this.jogos = jogos;
+        this.jogos = (Set<Jogos>) jogo;
     }
 
 }

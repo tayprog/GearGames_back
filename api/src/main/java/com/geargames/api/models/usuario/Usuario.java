@@ -1,5 +1,5 @@
 package com.geargames.api.models.usuario;
-import com.geargames.api.models.biblioteca.Biblioteca;
+import com.geargames.api.models.jogos.Jogos;
 import com.geargames.api.models.pedido.Pedido;
 
 import java.util.*;
@@ -31,9 +31,9 @@ public class Usuario implements UserDetails{
 
     @OneToMany(mappedBy = "usuario")
     private Set<Pedido> pedidos = new HashSet<>();
-    
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Set<Biblioteca> biblioteca = new HashSet<>();
+
+    @OneToMany(mappedBy = "usuario")
+    public Set<Jogos> jogos = new HashSet<>();
 
     public Usuario(DadosCadastroUsuario dados) {
         this.nome = dados.nome();
