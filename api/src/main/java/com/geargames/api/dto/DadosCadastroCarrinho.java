@@ -1,4 +1,4 @@
-package com.geargames.api.models.carrinho;
+package com.geargames.api.dto;
 
 public record DadosCadastroCarrinho(
         String preco,

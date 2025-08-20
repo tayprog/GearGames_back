@@ -1,5 +1,6 @@
-package com.geargames.api.models.jogos;
+package com.geargames.api.dto;
 
+import com.geargames.api.models.jogos.Categoria;
 import com.geargames.api.models.usuario.Usuario;
 
 public record DadosCadastroJogos(

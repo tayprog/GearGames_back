@@ -1,4 +1,4 @@
-package com.geargames.api.models.categorias;
+package com.geargames.api.dto;
 
 public record DadosCadastroCategorias(
     String nome,                  

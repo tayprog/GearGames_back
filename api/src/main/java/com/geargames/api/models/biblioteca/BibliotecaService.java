@@ -1,9 +1,12 @@
 package com.geargames.api.models.biblioteca;
 
-import com.geargames.api.models.jogos.JogoRepository;
+import com.geargames.api.dto.DadosCadastroBiblioteca;
 import com.geargames.api.models.jogos.Jogos;
 import com.geargames.api.models.usuario.Usuario;
-import com.geargames.api.models.usuario.UsuarioRepository;
+import com.geargames.api.repository.BibliotecaRepository;
+import com.geargames.api.repository.JogoRepository;
+import com.geargames.api.repository.UsuarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

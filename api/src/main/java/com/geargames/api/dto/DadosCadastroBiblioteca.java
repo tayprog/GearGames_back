@@ -1,4 +1,4 @@
-package com.geargames.api.models.biblioteca;
+package com.geargames.api.dto;
 
 public record DadosCadastroBiblioteca(
     Long id_usuario,

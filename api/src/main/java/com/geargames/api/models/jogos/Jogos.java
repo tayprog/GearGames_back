@@ -1,6 +1,7 @@
 package com.geargames.api.models.jogos;
 
 
+import com.geargames.api.dto.DadosCadastroJogos;
 import com.geargames.api.models.biblioteca.Biblioteca;
 import com.geargames.api.models.usuario.Usuario;
 

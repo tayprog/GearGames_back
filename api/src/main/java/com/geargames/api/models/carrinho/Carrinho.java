@@ -2,6 +2,8 @@ package com.geargames.api.models.carrinho;
 
 
 
+import com.geargames.api.dto.DadosCadastroCarrinho;
+
 import jakarta.persistence.*;
 import lombok.*;
 

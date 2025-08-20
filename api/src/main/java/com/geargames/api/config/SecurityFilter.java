@@ -1,4 +1,4 @@
-package com.geargames.api.services.infra_security;
+package com.geargames.api.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.geargames.api.models.usuario.Usuario;
-import com.geargames.api.models.usuario.UsuarioRepository;
+import com.geargames.api.repository.UsuarioRepository;
+
 import java.io.IOException;
 import java.util.Collections;
 

@@ -1,4 +1,4 @@
-package com.geargames.api.models.pagamento;
+package com.geargames.api.dto;
 
 import java.time.LocalDateTime;
 

@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.geargames.api.models.jogos.DadosCadastroJogos;
-import com.geargames.api.models.jogos.JogoRepository;
+import com.geargames.api.dto.DadosCadastroJogos;
 import com.geargames.api.models.jogos.Jogos;
+import com.geargames.api.repository.JogoRepository;
 
 import jakarta.transaction.Transactional;
 

@@ -3,7 +3,7 @@ package com.geargames.api.services.infra_security;
 
 
 import com.geargames.api.models.usuario.Usuario;
-import com.geargames.api.models.usuario.UsuarioRepository;
+import com.geargames.api.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

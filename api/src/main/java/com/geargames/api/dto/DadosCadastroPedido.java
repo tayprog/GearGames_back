@@ -1,9 +1,10 @@
-package com.geargames.api.models.pedido;
+package com.geargames.api.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import com.geargames.api.models.pagamento.Pagamento;
+import com.geargames.api.models.pedido.Jogo;
 import com.geargames.api.models.usuario.Usuario;
 
 public record DadosCadastroPedido(

@@ -1,4 +1,5 @@
 package com.geargames.api.models.usuario;
+import com.geargames.api.dto.DadosCadastroUsuario;
 import com.geargames.api.models.jogos.Jogos;
 import com.geargames.api.models.pedido.Pedido;
 

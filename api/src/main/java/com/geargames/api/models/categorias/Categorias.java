@@ -1,5 +1,7 @@
 package com.geargames.api.models.categorias;
 
+import com.geargames.api.dto.DadosCadastroCategorias;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

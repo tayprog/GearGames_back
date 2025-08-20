@@ -1,4 +1,4 @@
-package com.geargames.api.services.infra_security;
+package com.geargames.api.config;
 
 
 

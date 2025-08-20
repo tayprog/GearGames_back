@@ -2,11 +2,13 @@ package com.geargames.api.services.infra_security;
 
 
 
+import com.geargames.api.config.TokenService;
 import com.geargames.api.dto.LoginRequestDTO;
 import com.geargames.api.dto.RegisterRequestDTO;
 import com.geargames.api.dto.ResponseDTO;
 import com.geargames.api.models.usuario.Usuario;
-import com.geargames.api.models.usuario.UsuarioRepository;
+import com.geargames.api.repository.UsuarioRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
